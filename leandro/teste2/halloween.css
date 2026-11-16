@@ -1,0 +1,152 @@
+/* =========================================
+   GRINDHOUSE SKATE — HALLOWEEN THEME
+   Link this AFTER styles.css
+   ========================================= */
+
+:root {
+  --bg: #0b0710;
+  --ink: #f4e9d8;       /* cream borders & text */
+  --muted: #b9a9c9;
+  --accent: #ff7a00;    /* pumpkin orange */
+  --accent-2: #9b5de5;  /* witch purple */
+  --card: #171021;
+  --radius: 14px;
+  --font-display: Georgia, "Times New Roman", serif;
+}
+
+body {
+  background:
+    radial-gradient(circle at 15% 10%, rgba(155, 93, 229, 0.18), transparent 35%),
+    radial-gradient(circle at 85% 0%, rgba(255, 122, 0, 0.12), transparent 40%),
+    #0b0710;
+  color: var(--ink);
+}
+
+/* Header */
+.site-header {
+  background: rgba(11, 7, 16, 0.92);
+  border-bottom-color: var(--accent);
+}
+
+.logo span {
+  color: var(--accent);
+}
+
+.nav-links a:hover {
+  color: var(--accent);
+}
+
+/* Hero */
+.eyebrow {
+  background: var(--accent-2);
+  color: #fff;
+  border-color: var(--ink);
+}
+
+.hero h1 {
+  letter-spacing: 1px;
+  text-shadow: 4px 4px 0 rgba(155, 93, 229, 0.45);
+}
+
+.hero-media {
+  box-shadow: 10px 10px 0 var(--accent-2);
+  border-color: var(--ink);
+}
+
+/* Buttons */
+.btn {
+  background: var(--accent);
+  color: #1a0f00;
+  border-color: var(--ink);
+  box-shadow: 5px 5px 0 var(--accent-2);
+}
+
+.btn:hover {
+  box-shadow: 7px 7px 0 var(--accent-2);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--ink);
+}
+
+.btn-outline:hover {
+  background: rgba(155, 93, 229, 0.2);
+}
+
+/* Section headings get a little Halloween flair */
+.section-head h2::before {
+  content: "🎃 ";
+}
+
+.section-head h2::after {
+  content: " 🦇";
+}
+
+/* Cards */
+.card {
+  box-shadow: 7px 7px 0 var(--accent-2);
+}
+
+.card:hover {
+  box-shadow: 10px 10px 0 var(--accent);
+}
+
+.card-media {
+  border-bottom-color: var(--accent-2);
+}
+
+.badge {
+  background: var(--accent-2);
+  color: #fff;
+  border-color: var(--ink);
+}
+
+.badge.sale {
+  background: var(--accent);
+  color: #1a0f00;
+}
+
+.card-body h3 {
+  color: var(--accent);
+}
+
+.mini-btn {
+  background: var(--accent-2);
+  color: #fff;
+  border-color: var(--ink);
+}
+
+.mini-btn:hover {
+  background: var(--accent);
+  color: #1a0f00;
+  border-color: var(--ink);
+}
+
+/* Split section */
+.split-media {
+  box-shadow: 10px 10px 0 var(--accent);
+  border-color: var(--ink);
+}
+
+.split-text li::before {
+  content: "🕷";
+}
+
+/* Features strip */
+.features {
+  background: #140e1c;
+  border-top: 3px solid var(--accent-2);
+  border-bottom: 3px solid var(--accent-2);
+}
+
+.feature .ico {
+  filter: drop-shadow(0 0 6px var(--accent));
+}
+
+/* Footer */
+.site-footer {
+  background: #07040a;
+  border-top: 3px solid var(--accent-2);
+}

@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sole Society — Step Into Style</title>
+
+<style>
+  /* ---------- Base ---------- */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  :root {
+    --dark: #14161a;
+    --text: #22252b;
+    --muted: #6b7280;
+    --accent: #ff5c35;
+    --bg: #f7f7f8;
+    --card: #ffffff;
+    --radius: 16px;
+  }
+
+  body {
+    font-family: "Segoe UI", system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  a { text-decoration: none; color: inherit; }
+
+  /* ---------- Header ---------- */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid #e8e8ec;
+  }
+
+  .nav {
+    max-width: 1150px;
+    margin: 0 auto;
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .logo {
+    font-size: 1.35rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+  }
+
+  .logo span { color: var(--accent); }
+
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
+
+  .nav-links a {
+    color: var(--muted);
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--accent); }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    max-width: 1150px;
+    margin: 0 auto;
+    padding: 70px 24px 80px;
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    flex-wrap: wrap;
+  }
+
+  .hero-text {
+    flex: 1 1 340px;
+  }
+
+  .tag {
+    display: inline-block;
+    background: #ffe9e2;
+    color: var(--accent);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 999px;
+    margin-bottom: 18px;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.1rem, 5vw, 3.4rem);
+    line-height: 1.1;
+    letter-spacing: -1.5px;
+    font-weight: 800;
+    margin-bottom: 18px;
+  }
+
+  .hero p {
+    color: var(--muted);
+    font-size: 1.05rem;
+    max-width: 460px;
+    margin-bottom: 30px;
+  }
+
+  .btn {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-weight: 600;
+    padding: 14px 32px;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+    box-shadow: 0 8px 22px rgba(255, 92, 53, 0.32);
+  }
+
+  .btn:hover {
+    background: #e94a24;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(255, 92, 53, 0.42);
+  }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--text);
+    border: 2px solid #d9d9e0;
+    box-shadow: none;
+    margin-left: 12px;
+  }
+
+  .btn-ghost:hover {
+    background: #fff;
+    border-color: var(--text);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  .hero-img {
+    flex: 1 1 380px;
+    height: 380px;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 25px 50px rgba(20, 22, 26, 0.18);
+  }
+
+  .hero-img img {
+    transition: transform 0.6s ease;
+  }
+
+  .hero-img:hover img {
+    transform: scale(1.06);
+  }
+
+  /* ---------- Section titles ---------- */
+  .section {
+    max-width: 1150px;
+    margin: 0 auto;
+    padding: 20px 24px 90px;
+  }
+
+  .section-head {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .section-head h2 {
+    font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+    letter-spacing: -0.8px;
+    font-weight: 800;
+    margin-bottom: 10px;
+  }
+
+  .section-head p {
+    color: var(--muted);
+  }
+
+  /* ---------- Product grid ---------- */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 28px;
+  }
+
+  .card {
+    background: var(--card);
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid #ececf0;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(20, 22, 26, 0.12);
+  }
+
+  .card-img {
+    position: relative;
+    height: 210px;
+    overflow: hidden;
+    background: #eee;
+  }
+
+  .card-img img {
+    transition: transform 0.5s ease;
+  }
+
+  .card:hover .card-img img {
+    transform: scale(1.08);
+  }
+
+  .badge {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    background: var(--dark);
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 999px;
+  }
+
+  .badge.sale { background: var(--accent); }
+
+  .card-body {
+    padding: 20px;
+  }
+
+  .card-body h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  .card-body .cat {
+    font-size: 0.82rem;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+
+  .price-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .price {
+    font-weight: 800;
+    font-size: 1.1rem;
+  }
+
+  .price s {
+    color: #b0b3bb;
+    font-weight: 500;
+    font-size: 0.88rem;
+    margin-left: 6px;
+  }
+
+  .mini-btn {
+    background: var(--dark);
+    color: #fff;
+    border: none;
+    border-radius: 999px;
+    padding: 9px 18px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .mini-btn:hover { background: var(--accent); }
+
+  /* ---------- Feature strip ---------- */
+  .features {
+    background: var(--dark);
+    color: #fff;
+    padding: 60px 24px;
+  }
+
+  .features-inner {
+    max-width: 1150px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 34px;
+    text-align: center;
+  }
+
+  .feature h4 {
+    font-size: 1rem;
+    margin-bottom: 6px;
+  }
+
+  .feature p {
+    color: #9aa0ac;
+    font-size: 0.88rem;
+  }
+
+  .feature .ico {
+    font-size: 1.6rem;
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  /* ---------- Footer ---------- */
+  footer {
+    background: #0d0f12;
+    color: #9aa0ac;
+    text-align: center;
+    padding: 34px 24px;
+    font-size: 0.88rem;
+  }
+
+  footer strong { color: #fff; }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 640px) {
+    .nav-links { display: none; }
+    .hero { padding: 45px 24px 55px; gap: 35px; }
+    .hero-img { height: 260px; }
+    .btn-ghost { margin-left: 0; margin-top: 12px; }
+  }
+</style>
+</head>
+
+<body>
+
+  <!-- ===== Header ===== -->
+  <header>
+    <nav class="nav">
+      <div class="logo">Sole<span>Society</span></div>
+      <ul class="nav-links">
+        <li><a href="#shop">Shop</a></li>
+        <li><a href="#shop">New Arrivals</a></li>
+        <li><a href="#features">About</a></li>
+        <li><a href="#footer">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ===== Hero ===== -->
+  <section class="hero">
+    <div class="hero-text">
+      <span class="tag">New Season 2025</span>
+      <h1>Step Into<br>Your Next Pair.</h1>
+      <p>Handpicked sneakers, runners and everyday classics — built for comfort and made to turn heads.</p>
+      <a href="#shop" class="btn">Shop Now</a>
+      <a href="#features" class="btn btn-ghost">Learn More</a>
+    </div>
+    <div class="hero-img">
+      <img src="https://picsum.photos/seed/shoehero/900/700" alt="Featured shoe">
+    </div>
+  </section>
+
+  <!-- ===== Products ===== -->
+  <section class="section" id="shop">
+    <div class="section-head">
+      <h2>Our Collection</h2>
+      <p>Six of our favourite pairs, ready to ship.</p>
+    </div>
+
+    <div class="grid">
+
+      <article class="card">
+        <div class="card-img">
+          <span class="badge">New</span>
+          <img src="https://picsum.photos/seed/shoe1/600/500" alt="Aero Runner">
+        </div>
+        <div class="card-body">
+          <h3>Aero Runner</h3>
+          <p class="cat">Running · Lightweight</p>
+          <div class="price-row">
+            <span class="price">$129</span>
+            <button class="mini-btn">Add to Cart</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-img">
+          <span class="badge sale">-20%</span>
+          <img src="https://picsum.photos/seed/shoe2/600/500" alt="Street Classic">
+        </div>
+        <div class="card-body">
+          <h3>Street Classic</h3>
+          <p class="cat">Lifestyle · Canvas</p>
+          <div class="price-row">
+            <span class="price">$79 <s>$99</s></span>
+            <button class="mini-btn">Add to Cart</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-img">
+          <img src="https://picsum.photos/seed/shoe3/600/500" alt="Cloud Walker">
+        </div>
+        <div class="card-body">
+          <h3>Cloud Walker</h3>
+          <p class="cat">Walking · Cushioned</p>
+          <div class="price-row">
+            <span class="price">$149</span>
+            <button class="mini-btn">Add to Cart</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-img">
+          <span class="badge">New</span>
+          <img src="https://picsum.photos/seed/shoe4/600/500" alt="Trail Blazer">
+        </div>
+        <div class="card-body">
+          <h3>Trail Blazer</h3>
+          <p class="cat">Outdoor · Grip Sole</p>
+          <div class="price-row">
+            <span class="price">$165</span>
+            <button class="mini-btn">Add to Cart</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-img">
+          <img src="https://picsum.photos/seed/shoe5/600/500" alt="Retro Court">
+        </div>
+        <div class="card-body">
+          <h3>Retro Court</h3>
+          <p class="cat">Lifestyle · Suede</p>
+          <div class="price-row">
+            <span class="price">$110</span>
+            <button class="mini-btn">Add to Cart</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-img">
+          <span class="badge sale">-15%</span>
+          <img src="https://picsum.photos/seed/shoe6/600/500" alt="Flex Trainer">
+        </div>
+        <div class="card-body">
+          <h3>Flex Trainer</h3>
+          <p class="cat">Training · Breathable</p>
+          <div class="price-row">
+            <span class="price">$94 <s>$110</s></span>
+            <button class="mini-btn">Add to Cart</button>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ===== Features ===== -->
+  <section class="features" id="features">
+    <div class="features-inner">
+      <div class="feature">
+        <span class="ico">🚚</span>
+        <h4>Free Shipping</h4>
+        <p>On all orders over $75</p>
+      </div>
+      <div class="feature">
+        <span class="ico">↩️</span>
+        <h4>30-Day Returns</h4>
+        <p>No questions asked</p>
+      </div>
+      <div class="feature">
+        <span class="ico">🔒</span>
+        <h4>Secure Checkout</h4>
+        <p>Encrypted payments</p>
+      </div>
+      <div class="feature">
+        <span class="ico">💬</span>
+        <h4>Real Support</h4>
+        <p>Humans, 7 days a week</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer id="footer">
+    <p><strong>Sole Society</strong> · Made for people who love shoes.</p>
+    <p style="margin-top:8px; font-size:0.8rem;">© 2025 Sole Society. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
